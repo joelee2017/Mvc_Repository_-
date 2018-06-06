@@ -71,7 +71,7 @@ namespace Mvc_Repository.Models.Repository
 
         public void SaveChanges()
         {
-            return db.SaveChanges();
+            this.db.SaveChanges();
         }
               
 
