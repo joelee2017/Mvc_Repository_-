@@ -65,6 +65,24 @@ namespace Mvc_Repository.Controllers
         }
         //======================================================================
 
+        public ActionResult Edit(int? id)
+        {
+            if(!id.HasValue)
+            {
+                return RedirectToAction("index");
+            }
+            else
+            {
+                using (TestDBEntities db = new TestDBEntities())
+                {
+                    var model = db.Categories.FirstOrDefault(x => x.CategoryID == id.Value);
+                    ViewData.Model = model;
+                    return View();
+                }
+                
+            }
+        }
+
         [HttpPost]
         public ActionResult Edit(Categories category)
         {
