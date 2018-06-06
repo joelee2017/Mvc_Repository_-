@@ -7,14 +7,15 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Mvc_Repository.Models;
+using Mvc_Repository.Models.Interface;
 using Mvc_Repository.Models.Repository;
 
 namespace Mvc_Repository.Controllers
 {
     public class ProductController : Controller
     {
-        private IProductRepository productRepository;
-        private ICategoryRepository categoryRepository;
+        private IRepository<Products> productRepository;
+        private IRepository<Categories> categoryRepository;
 
         public IEnumerable<Categories> Categories
         {
@@ -26,8 +27,8 @@ namespace Mvc_Repository.Controllers
 
         public ProductController()
         {
-            this.productRepository = new ProductRepository();
-            this.categoryRepository = new CategoryRepository();
+            this.productRepository = new GenericRepository();
+            this.categoryRepository = new GenericRepository();
         }
 
         // GET: Product
