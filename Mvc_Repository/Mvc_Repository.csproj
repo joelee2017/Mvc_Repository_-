@@ -196,6 +196,9 @@
     <Compile Include="Models\Products.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Interface\ICategoryRepository.cs" />
+    <Compile Include="Models\Interface\IProductRepository.cs" />
+    <Compile Include="Models\Repository\CategoryRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
