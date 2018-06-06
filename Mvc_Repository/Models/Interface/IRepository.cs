@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Web;
 
 namespace Mvc_Repository.Models.Interface
@@ -14,7 +15,7 @@ namespace Mvc_Repository.Models.Interface
 
         void Delete(TEntity instance);
 
-        TEntity Get(int PrimaryID);
+        TEntity Get(Expression<Func<TEntity, bool>> predicate);
 
         IQueryable<TEntity> GetAll();
 
