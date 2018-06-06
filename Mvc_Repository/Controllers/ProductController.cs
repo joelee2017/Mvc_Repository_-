@@ -27,14 +27,16 @@ namespace Mvc_Repository.Controllers
 
         public ProductController()
         {
-            this.productRepository = new GenericRepository();
-            this.categoryRepository = new GenericRepository();
+            this.productRepository = new GenericRepository<Products>();
+            this.categoryRepository = new GenericRepository<Categories>();
         }
 
         // GET: Product
         public ActionResult Index()
         {
-            var products = productRepository.GetAll().ToList();
+            var products = productRepository.GetAll()
+                .OrderByDescending(x => x.ProductID)
+                .ToList();
             return View(products);
         }
         //===========================================================================
@@ -43,7 +45,7 @@ namespace Mvc_Repository.Controllers
         public ActionResult Details(int id = 0)
         {
 
-            Products products = productRepository.Get(id);
+            Products products = productRepository.Get(x => x.ProductID == id);
             if (products == null)
             {
                 return HttpNotFound();
@@ -77,7 +79,7 @@ namespace Mvc_Repository.Controllers
         // GET: Product/Edit/5
         public ActionResult Edit(int id = 0)
         {
-            Products products = this.productRepository.Get(id);
+            Products products = this.productRepository.Get(x => x.ProductID == id);
             if (products == null)
             {
                 return HttpNotFound();
@@ -103,7 +105,7 @@ namespace Mvc_Repository.Controllers
         // GET: Product/Delete/5
         public ActionResult Delete(int id = 0)
         {
-            Products products = this.productRepository.Get(id);
+            Products products = this.productRepository.Get(x => x.ProductID == id);
             if (products == null)
             {
                 return HttpNotFound();
@@ -115,7 +117,7 @@ namespace Mvc_Repository.Controllers
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)
         {
-            Products products = this.productRepository.Get(id);
+            Products products = this.productRepository.Get(x => x.ProductID == id);
             this.productRepository.Delete(products);
             return RedirectToAction("Index");
         }
