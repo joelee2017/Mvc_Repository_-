@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Mvc_Repository.Model
+namespace Mvc_Repository.Service.Interface
 {
-    public class Class1
+    public interface ICategoryService
     {
+        
     }
 }

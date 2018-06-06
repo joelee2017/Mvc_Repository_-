@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mvc_Repository.Web", "Mvc_R
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mvc_Repository.Models", "Mvc_Repository.Model\Mvc_Repository.Models.csproj", "{35FA01F9-9D78-471B-8628-4F61F91BD9F4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mvc_Repository.Service", "Mvc_Repository.Service\Mvc_Repository.Service.csproj", "{414E9A5B-D6DB-466B-892E-CBBE8E4C246F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{35FA01F9-9D78-471B-8628-4F61F91BD9F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{35FA01F9-9D78-471B-8628-4F61F91BD9F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{35FA01F9-9D78-471B-8628-4F61F91BD9F4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{414E9A5B-D6DB-466B-892E-CBBE8E4C246F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{414E9A5B-D6DB-466B-892E-CBBE8E4C246F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{414E9A5B-D6DB-466B-892E-CBBE8E4C246F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{414E9A5B-D6DB-466B-892E-CBBE8E4C246F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
