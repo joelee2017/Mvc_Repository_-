@@ -10,7 +10,7 @@ using Mvc_Repository.Models;
 using Mvc_Repository.Models.Interface;
 using Mvc_Repository.Models.Repository;
 
-namespace Mvc_Repository.Controllers
+namespace Mvc_Repository.Web.Controllers
 {
     public class ProductController : Controller
     {
