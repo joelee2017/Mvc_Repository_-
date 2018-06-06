@@ -199,6 +199,7 @@
     <Compile Include="Models\Interface\ICategoryRepository.cs" />
     <Compile Include="Models\Interface\IProductRepository.cs" />
     <Compile Include="Models\Repository\CategoryRepository.cs" />
+    <Compile Include="Models\Repository\ProductRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
