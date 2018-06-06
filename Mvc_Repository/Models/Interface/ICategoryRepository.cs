@@ -8,6 +8,6 @@ namespace Mvc_Repository.Models.Repository
 {
     public interface ICategoryRepository: IRepository<Categories>
     {
-      
+        Categories GetByID(int categoryID);
     }
 }

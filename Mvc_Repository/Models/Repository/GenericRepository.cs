@@ -12,8 +12,6 @@ namespace Mvc_Repository.Models.Repository
     public class GenericRepository<TEntity> : IRepository<TEntity>
         where TEntity : class
     {
-        private TestDBEntities testDBEntities;
-
         private DbContext _context
         {
             get;

@@ -8,6 +8,8 @@ namespace Mvc_Repository.Models.Repository
 {
     public interface IProductRepository: IRepository<Products>
     {
-       
+        Products GetByID(int productID);
+
+        IEnumerable<Products> GetByCategory(int categoryID);
     }
 }
