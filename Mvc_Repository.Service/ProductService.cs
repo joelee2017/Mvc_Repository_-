@@ -88,7 +88,7 @@ namespace Mvc_Repository.Service
             return this.repository.Get(x => x.ProductID == productID);
         }
 
-        public IEnumerable<Products> GeAll()
+        public IEnumerable<Products> GetAll()
         {
             return this.repository.GetAll();
         }

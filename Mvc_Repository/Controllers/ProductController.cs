@@ -9,26 +9,28 @@ using System.Web.Mvc;
 using Mvc_Repository.Models;
 using Mvc_Repository.Models.Interface;
 using Mvc_Repository.Models.Repository;
+using Mvc_Repository.Service;
+using Mvc_Repository.Service.Interface;
 
 namespace Mvc_Repository.Web.Controllers
 {
     public class ProductController : Controller
     {
-        private IProductRepository productRepository;
-        private ICategoryRepository categoryRepository;
+        private IProductService productService;
+        private ICategoryService categoryService;
 
         public IEnumerable<Categories> Categories
         {
             get
             {
-                return categoryRepository.GetAll();
+                return categoryService.GetAll();
             }
         }
 
         public ProductController()
         {
-            this.productRepository = new ProductRepository();
-            this.categoryRepository = new CategoryRepository();
+            this.productService = new ProductService();
+            this.categoryService = new CategoryService();
         }
 
         // GET: Product
@@ -41,12 +43,12 @@ namespace Mvc_Repository.Web.Controllers
                 : this.CategorySelectList("all");
 
             var result = category.Equals("all", StringComparison.OrdinalIgnoreCase)
-                ? this.productRepository.GetAll()
-                : productRepository.GetByCategory(categoryID);
+                ? this.productService.GetAll()
+                : productService.GetByCategory(categoryID);
 
 
 
-            var products = productRepository.GetAll().OrderByDescending(x => x.ProductID).ToList();
+            var products = productService.GetAll().OrderByDescending(x => x.ProductID).ToList();
             return View(products);
         }
 
@@ -65,7 +67,7 @@ namespace Mvc_Repository.Web.Controllers
                 Selected = selectedValue.Equals("all", StringComparison.OrdinalIgnoreCase)
             });
 
-            var categories = categoryRepository.GetAll().OrderBy(x => x.CategoryID);
+            var categories = categoryService.GetAll().OrderBy(x => x.CategoryID);
 
             foreach(var c in categories)
             {
@@ -85,7 +87,7 @@ namespace Mvc_Repository.Web.Controllers
         {
             if (!id.HasValue) return RedirectToAction("index");
 
-            Products products = productRepository.GetByID(id.Value);
+            Products products = productService.GetByID(id.Value);
             if (products == null)
             {
                 return HttpNotFound();
@@ -111,7 +113,7 @@ namespace Mvc_Repository.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                this.productRepository.Create(products);
+                this.productService.Create(products);
                 return RedirectToAction("Index", new { category = category });
             }
 
@@ -125,7 +127,7 @@ namespace Mvc_Repository.Web.Controllers
         {
             if (!id.HasValue) return RedirectToAction("index");
 
-            Products products = this.productRepository.GetByID(id.Value);
+            Products products = this.productService.GetByID(id.Value);
             if (products == null)
             {
                 return HttpNotFound();
@@ -142,7 +144,7 @@ namespace Mvc_Repository.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                this.productRepository.Update(products);
+                this.productService.Update(products);
                 return RedirectToAction("Index", new { category = category });
             }
             ViewBag.CategoryID = new SelectList(this.Categories, "CategoryID", "CategoryName", products.CategoryID);
@@ -155,7 +157,7 @@ namespace Mvc_Repository.Web.Controllers
         {
             if (!id.HasValue) return RedirectToAction("index");
 
-            Products products = this.productRepository.GetByID(id.Value);
+            Products products = this.productService.GetByID(id.Value);
             if (products == null)
             {
                 return HttpNotFound();
@@ -170,8 +172,8 @@ namespace Mvc_Repository.Web.Controllers
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id, string category)
         {
-            Products products = this.productRepository.GetByID(id);
-            this.productRepository.Delete(products);
+
+            this.productService.Delete(id);
 
             return RedirectToAction("Index", new { category = category });
         }

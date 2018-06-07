@@ -20,7 +20,7 @@ namespace Mvc_Repository.Service.Interface
 
         Products GetByID(int productID);
 
-        IEnumerable<Products> GeAll();
+        IEnumerable<Products> GetAll();
 
         IEnumerable<Products> GetByCategory(int categoryID);
 

@@ -26,7 +26,7 @@ namespace Mvc_Repository.Models.Repository
 
         public GenericRepository(DbContext context)
         {
-            if(context ==null)
+            if(context == null)
             {
                 throw new ArgumentNullException("context");
             }
