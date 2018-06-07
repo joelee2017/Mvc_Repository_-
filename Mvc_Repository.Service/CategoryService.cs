@@ -37,29 +37,60 @@ namespace Mvc_Repository.Service
 
         public IResult Update(Categories instance)
         {
-            throw new NotImplementedException();
+            if(instance == null)
+            {
+                throw new ArgumentNullException();
+            }
+
+            IResult result = new Result(false);
+            try
+            {
+                this.repository.Update(instance);
+                result.Success = true;
+            }
+            catch(Exception ex)
+            {
+                result.Exception = ex;
+            }
+            return result;
         }
 
         public IResult Delete(int categoryID)
         {
-            throw new NotImplementedException();
-        }
+            IResult result = new Result(false);
 
-        public IEnumerable<Categories> GetAll()
-        {
-            throw new NotImplementedException();
-        }
+            if(!this.IsExists(categoryID))
+            {
+                result.Message = "找不到資料";
+            }
 
-        public Categories GetByID(int categoryID)
-        {
-            throw new NotImplementedException();
+            try
+            {
+                var instance = this.GetByID(categoryID);
+                this.repository.Delete(instance);
+                result.Success = true;
+            }
+            catch(Exception ex)
+            {
+                result.Exception = ex;
+            }
+            return result;
         }
 
         public bool IsExists(int categoryID)
         {
-            throw new NotImplementedException();
+            return this.repository.GetAll().Any(x => x.CategoryID == categoryID);
         }
 
-       
+        public Categories GetByID(int categoryID)
+        {
+            return this.repository.Get(x => x.CategoryID == categoryID);
+        }
+
+        public IEnumerable<Categories> GetAll()
+        {
+            return this.repository.GetAll();
+        }
+
     }
 }
