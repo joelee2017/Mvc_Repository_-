@@ -59,7 +59,7 @@ namespace Mvc_Repository.Service
         {
             IResult result = new Result(false);
 
-            if (!this.IsExists(productID)) ;
+            if (!this.IsExists(productID)) 
             {
                 result.Message = "找不到資料";
             }
