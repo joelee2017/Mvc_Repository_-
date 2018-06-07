@@ -8,8 +8,6 @@ namespace Mvc_Repository.Service.Misc
 {
     public class Result : IResult
     {
-        private bool v;
-
         public Guid ID { get; private set; }
         public bool Success { get; set; }
         public string Message { get; set; }
